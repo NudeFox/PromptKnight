@@ -1,0 +1,8 @@
+node_modules
+.pnpm-store
+pnpm-lock.yaml
+.wxt
+.output
+coverage
+.idea
+PromptKnight_SPEC.md

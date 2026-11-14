@@ -1,0 +1,36 @@
+node_modules/
+.pnpm-store/
+.wxt/
+.output/
+coverage/
+.idea/
+.DS_Store
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+.aws/
+.ssh/
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc.local
+
+# Personal agent/editor settings
+.agents/
+.codex/
+.vscode/
+*.iml
+
+# Generated output, packages and diagnostics
+dist/
+build/
+*.tsbuildinfo
+*.log
+*.crx
+*.zip
+playwright-report/
+test-results/
