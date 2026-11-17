@@ -1,4 +1,4 @@
-# Threat model draft — M01
+# Threat model
 
 ## Current boundary
 
@@ -6,13 +6,22 @@ Assets include future clipboard text, user decisions, and site permissions. The 
 page and pasted content must be treated as untrusted. The browser, extension runtime,
 and installed dependencies form part of the trusted computing base.
 
-M01 has no clipboard access, paste listener, storage, content script, or requested
-permissions. Its engine is a stub and offers no detection. A misleading protection
-claim is therefore a current risk: the popup and README explicitly state protection
+The extension has no clipboard access, paste listener, storage, content script, or
+requested permissions. Its standalone engine scans only text explicitly passed by a
+caller and is not connected to browser paste events. A misleading protection claim
+is therefore a current risk: the popup and README explicitly state protection
 is inactive. Build dependencies may use the network during installation; the production
 extension has no application network functionality.
 
-## Threats to address in later milestones
+## Engine safeguards and limits
+
+Scanning is bounded to 100,000 UTF-16 code units; oversized inputs return an explicit
+incomplete result. Findings contain metadata and ranges rather than raw values.
+Redaction rejects invalid or overlapping ranges. Synthetic tests exercise false
+positives, Unicode offsets and hostile input shapes. These checks do not prove that
+all secrets will be detected. See [Detection engine](detection-engine.md) for rule limits.
+
+## Browser integration requirements
 
 - Accidental disclosure through paste: synchronous local scanning and explicit choices;
   heuristics still produce false positives and false negatives.
@@ -33,5 +42,6 @@ Typing, drag-and-drop, file uploads, screenshots, voice, programmatic changes, a
 unavailable editors are outside paste-only coverage. A malicious authorized page can
 read text that the user explicitly inserts. Local-first does not mean infallible.
 
-These are design requirements, not validated M01 protection properties. Revisit this
-model as detection, paste handling, permissions, and release work are implemented.
+The browser integration items above are design requirements, not implemented
+protection properties. Revisit this model as paste handling, permissions and release
+work are implemented.

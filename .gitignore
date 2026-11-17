@@ -34,3 +34,8 @@ build/
 *.zip
 playwright-report/
 test-results/
+
+# Internal implementation plan and agent work reports
+/PromptKnight_SPEC.md
+/docs/m01-verification.md
+/docs/m02-verification.md

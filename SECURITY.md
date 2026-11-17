@@ -1,7 +1,8 @@
 # Security policy
 
-PromptKnight is an early development preview. M01 does not protect pasted text.
-Detection and redaction interfaces are stubs. No security guarantees are offered.
+PromptKnight is an early development preview. The standalone engine detects and
+redacts potential secrets locally, but browser paste protection is not implemented.
+Detection is heuristic and can miss secrets or flag ordinary text.
 
 Do not post live secrets, clipboard contents, or exploit details in public issues.
 If the repository's GitHub Security tab offers **Report a vulnerability**, use its

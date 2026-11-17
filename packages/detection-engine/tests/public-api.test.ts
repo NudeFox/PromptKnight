@@ -9,7 +9,7 @@ import {
   type Severity,
 } from '@promptknight/detection-engine';
 
-describe('M01 public package API', () => {
+describe('Public package API', () => {
   const engine: DetectionEngine = { scan, redact };
 
   it('returns an empty, untruncated result through the package export', () => {

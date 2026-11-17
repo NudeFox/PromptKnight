@@ -1,7 +1,8 @@
 # Contributing to PromptKnight
 
 Use Node.js 24 and the pinned pnpm version. Follow the setup and loading instructions
-in the README. Keep changes scoped to a milestone from `PromptKnight_SPEC.md`.
+in the README. Use [ROADMAP.md](ROADMAP.md) to understand planned work. Keep pull requests focused
+on one behavior or fix.
 
 Before submitting a pull request, run:
 

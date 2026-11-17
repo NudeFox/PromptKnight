@@ -1,6 +1,6 @@
 # PromptKnight
 
-Local-first protection for sensitive text — **M02 development preview**.
+Local-first protection for sensitive text — **Development preview**.
 
 This repository currently provides a React popup and a local detection/redaction engine.
 **Paste protection is not active.** Nothing scans, intercepts, or redacts your clipboard.
@@ -40,7 +40,7 @@ and again by `pnpm typecheck`.
 - `apps/extension`: WXT Manifest V3 app with the official React module, popup, and no-op background.
 - `packages/detection-engine`: framework-independent TypeScript types and working `scan`/`redact` functions.
 - `packages/shared`: shared product metadata consumed through a workspace export.
-- `docs`: draft architecture and threat model.
+- `docs`: architecture, detection rules and threat model.
 
 Workspace exports point to TypeScript source for consumption by WXT/Vite and Vitest;
 these private packages are not standalone published JavaScript distributions.
@@ -50,11 +50,12 @@ code units return `truncated: true`; callers must treat this as an incomplete sc
 
 ## Scope and roadmap
 
-M01 and M02 are implemented. The engine detects GitHub/OpenAI-style tokens, potential AWS
+The standalone engine detects GitHub/OpenAI-style tokens, potential AWS
 access IDs, JWT candidates, PEM private keys, database URL credentials and `.env` secrets.
 Email, IPv4 and card detectors remain disabled/unimplemented optional follow-ups.
-See [M02 verification](docs/m02-verification.md) for rules, limits and measurements.
-Paste interception and warning UI belong to M03; site permissions/settings to M04.
+See [Detection engine](docs/detection-engine.md) for rules, limits and measurements.
+Paste interception, warning UI and site permissions/settings are planned in the
+[roadmap](ROADMAP.md).
 No content scripts, backend, telemetry, remote executable code, or store release are included.
 
 Even the intended MVP is heuristic paste assistance, not comprehensive data-loss prevention.
