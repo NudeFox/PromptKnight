@@ -2,9 +2,11 @@
 
 Local-first protection for sensitive text — **Development preview**.
 
-This repository currently provides a React popup and a local detection/redaction engine.
-**Paste protection is not active.** Nothing scans, intercepts, or redacts your clipboard.
-The extension requests no permissions or host access.
+PromptKnight checks trusted text pastes locally in supported editors on pages you enable.
+When potential secrets are found, choose **Paste redacted**, **Paste original** or **Cancel**.
+Checks are off until you enable the current page from the toolbar. Reloading or navigating
+requires enabling again. Complex editors and frames are unsupported; browser acceptance
+checks remain outstanding in this development preview.
 
 ## Requirements and setup
 
@@ -26,9 +28,14 @@ Load the production build in Chrome:
 1. Open `chrome://extensions` and enable Developer mode.
 2. Choose **Load unpacked** and select `apps/extension/.output/chrome-mv3`.
 3. Pin PromptKnight and click its toolbar icon.
-4. Confirm the popup displays **PromptKnight**, **Local-first protection for sensitive text**,
-   **Development preview**, and the inactive-protection notice.
-5. Check that the extension reports no errors and requires no website access.
+4. Open an HTTPS page (or localhost), click the toolbar icon, then **Enable on this page**.
+5. In a supported text field, paste `API_KEY=synthetic-demo-value` and check the warning's
+   Redacted, Original and Cancel actions. Test ordinary text and Escape cancellation too.
+6. Choose **Disable on this page** to remove checks. Reloading also requires enabling again.
+
+No persistent website access or clipboard permission is requested. The toolbar action
+provides temporary access to the current page; `scripting` installs its local checker.
+See [paste protection](docs/paste-protection.md) for supported editors and limitations.
 
 For development, run `pnpm dev` (WXT launches a development browser). Development
 builds may include WXT development tooling; inspect the production build for release permissions.
@@ -54,9 +61,12 @@ The standalone engine detects GitHub/OpenAI-style tokens, potential AWS
 access IDs, JWT candidates, PEM private keys, database URL credentials and `.env` secrets.
 Email, IPv4 and card detectors remain disabled/unimplemented optional follow-ups.
 See [Detection engine](docs/detection-engine.md) for rules, limits and measurements.
-Paste interception, warning UI and site permissions/settings are planned in the
-[roadmap](ROADMAP.md).
-No content scripts, backend, telemetry, remote executable code, or store release are included.
+Per-site permissions/settings and further browser hardening are planned in the
+[roadmap](ROADMAP.md). No backend, telemetry, remote executable code or store release is included.
+
+Run `pnpm test:browser` for local Chrome clipboard fixtures, or `pnpm fixtures` for manual
+testing. Set `CHROME_PATH` if needed. These tests require permission to launch Chrome and
+listen on localhost. See [privacy](docs/privacy.md) for data handling.
 
 Even the intended MVP is heuristic paste assistance, not comprehensive data-loss prevention.
 Typing, drag-and-drop, files, screenshots, voice, programmatic changes, complex editors,

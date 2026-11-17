@@ -1,7 +1,8 @@
 # Security policy
 
 PromptKnight is an early development preview. The standalone engine detects and
-redacts potential secrets locally, but browser paste protection is not implemented.
+redacts potential secrets locally. Manual page paste checks are implemented for basic
+editors; browser fixture acceptance is still unverified in the implementation sandbox.
 Detection is heuristic and can miss secrets or flag ordinary text.
 
 Do not post live secrets, clipboard contents, or exploit details in public issues.

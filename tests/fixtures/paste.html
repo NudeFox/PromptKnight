@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Paste fixtures | PromptKnight</title>
+  </head>
+  <body>
+    <main>
+      <h1>PromptKnight paste fixtures</h1>
+      <p>
+        Use synthetic values only. This page loads the paste module for local
+        testing.
+      </p>
+      <label for="textarea">Textarea</label
+      ><textarea id="textarea">before after</textarea>
+      <label for="text">Text input</label
+      ><input id="text" value="before after" />
+      <div id="react-root"></div>
+      <h2 id="editable-label">Basic contenteditable</h2>
+      <div
+        id="editable"
+        contenteditable="true"
+        role="textbox"
+        aria-labelledby="editable-label"
+        style="white-space: pre-wrap"
+      >
+        before after
+      </div>
+      <h2 id="complex-label">Unsupported rich editor</h2>
+      <div
+        id="complex"
+        class="ProseMirror"
+        contenteditable="true"
+        role="textbox"
+        aria-labelledby="complex-label"
+      >
+        before after
+      </div>
+      <label for="password">Password (excluded)</label
+      ><input id="password" type="password" />
+      <label for="readonly">Read only (excluded)</label
+      ><textarea id="readonly" readonly>unchanged</textarea>
+      <fieldset disabled>
+        <label for="disabled">Disabled (excluded)</label
+        ><textarea id="disabled">unchanged</textarea>
+      </fieldset>
+    </main>
+    <script type="module" src="./paste.ts"></script>
+  </body>
+</html>

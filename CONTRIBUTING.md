@@ -13,6 +13,7 @@ pnpm format:check
 pnpm typecheck
 pnpm test
 pnpm test:coverage
+pnpm test:browser
 pnpm build
 ```
 
@@ -21,3 +22,7 @@ Use only synthetic fixtures; never include real credentials, pasted content, or 
 screenshots in source, logs, issues, or pull requests. Keep the detection engine independent
 of React, DOM, WXT, and browser APIs. Do not add access permissions without a concrete need.
 Report security concerns according to SECURITY.md.
+
+Browser fixtures require Chrome and localhost access. Set `CHROME_PATH` for a custom
+executable. Report environment failures explicitly; do not describe unexecuted fixtures
+as passing. See [paste protection](docs/paste-protection.md).

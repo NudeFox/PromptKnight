@@ -24,7 +24,8 @@ Email, IP and card detection are deliberately absent from the default engine.
 Maximum scan length: 100,000 UTF-16 code units. Larger input returns no partial findings,
 `truncated: true`, and fixed `SCAN_LIMIT_EXCEEDED` warning. Consumers must block or require
 an explicit decision on incomplete results; an empty findings list alone is insufficient.
-Browser paste integration and scan-failure UI are not implemented yet.
+The [paste controller](paste-protection.md) blocks incomplete scans and offers an
+explicit Original/Cancel decision.
 
 Benchmark: Node v24.14.0, macOS x64, Intel Core i5-8500 @ 3.00 GHz. A synthetic
 10,000-code-unit mixed prose/env payload, 100 warmups and 500 timed synchronous scans,

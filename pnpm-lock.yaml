@@ -41,6 +41,9 @@ importers:
 
   apps/extension:
     dependencies:
+      '@promptknight/detection-engine':
+        specifier: workspace:*
+        version: link:../../packages/detection-engine
       '@promptknight/shared':
         specifier: workspace:*
         version: link:../../packages/shared

@@ -45,3 +45,23 @@ p {
     color: #eef2fc;
   }
 }
+
+button {
+  font: inherit;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+button:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+[role='alert'] {
+  color: light-dark(#a22020, #ffb3b3);
+}
